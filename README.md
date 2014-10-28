@@ -5,7 +5,8 @@ Gulp task for running [cucumber.js](https://github.com/cucumber/cucumber-js) fea
 Installation
 ==
 ```sh
-npm install gulp-cucumber
+npm i -g cucumber
+npm i gulp-cucumber
 ```
 
 Using:
@@ -14,8 +15,9 @@ Using:
 var cucumber = require('gulp-cucumber');
 
 gulp.task('cucumber', function() {
-    gulp.src('features/*').pipe(cucumber({
-        'steps': 'features/steps/steps.js'
+    return gulp.src('features/**/*.feature').pipe(cucumber({
+        steps: 'features/step_definitions',
+        support: 'features/support'
     }));
 });
 ```
