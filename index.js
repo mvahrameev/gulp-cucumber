@@ -20,6 +20,9 @@ var cucumber = function(options) {
         runOptions.push(options.steps);
     }
 
+    runOptions.push('--format');
+    runOptions.push(options.format || 'pretty');
+
     if (process.platform === 'win32') {
         binPath = winPath;
     } else {
@@ -46,10 +49,7 @@ var cucumber = function(options) {
 
         cli.on('exit', function() {
             var data = Buffer.concat(output).toString();
-            var startIndex = data.substring(0, data.indexOf('"keyword": "Feature"')).lastIndexOf('[');
-            var featureOutput = data.substring(startIndex);
-            process.stdout.write(featureOutput.trim());
-            process.stdout.write('\r\nFeature: ' + filename);
+            process.stdout.write(data.trim());
         });
 
         return callback();
