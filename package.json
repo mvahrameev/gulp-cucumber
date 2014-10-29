@@ -22,6 +22,7 @@
     }
   ],
   "devDependencies": {
+    "cucumber": "^0.4.4",
     "gulp": "^3.8.8"
   },
   "dependencies": {
